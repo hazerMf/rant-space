@@ -8,13 +8,28 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to where I rant</h1>
+        <h1>Welcome to My Blog</h1>
+        <button id="postModeBtn">Post Mode</button>
     </header>
-    <section>
-        <article>
-            <h2>My First Post</h2>
-            <p>Hello, world! This is my first blog post.</p>
-        </article>
+
+    <section id="posts">
+        <!-- Blog posts will be displayed here -->
     </section>
+
+    <div id="postFormContainer" class="hidden">
+        <h2>Add a New Post</h2>
+        <input type="text" id="postTitle" placeholder="Title">
+        <textarea id="postContent" placeholder="Write your post here..."></textarea>
+        <button id="submitPost">Publish</button>
+        <button id="logout">Logout</button>
+    </div>
+
+    <div id="passwordPrompt" class="hidden">
+        <h2>Enter Password</h2>
+        <input type="password" id="passwordInput">
+        <button id="checkPassword">Enter</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
