@@ -4,31 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Welcome to My Blog</h1>
-        <button id="postModeBtn">Post Mode</button>
+        <label id = "postModeTgg" class="toggle-switch">
+            <input type="checkbox" />
+            <span class="slider"></span>
+        </label>
     </header>
+
+    <div id="passwordPrompt" hidden>
+        <h2>Enter Password</h2>
+        <input type="password" id="passwordInput">
+        <button id="checkPassword">Enter</button>
+    </div>
 
     <section id="posts">
         <div id="posts"></div>
         <!-- Blog posts will be displayed here -->
     </section>
 
-    <div id="postFormContainer" class="hidden">
+    <div id="postFormContainer" hidden>
         <h2>Add a New Post</h2>
         <input type="text" id="postTitle" placeholder="Title">
         <textarea id="postContent" placeholder="Write your post here..."></textarea>
         <button id="submitPost">Publish</button>
         <button id="logout">Logout</button>
-    </div>
-
-    <div id="passwordPrompt" class="hidden">
-        <h2>Enter Password</h2>
-        <input type="password" id="passwordInput">
-        <button id="checkPassword">Enter</button>
     </div>
 
     <script src="script.js"></script>
