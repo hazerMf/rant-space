@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Load posts from backend with edit/delete button
     async function loadPostsED() {
         try {
             const response = await fetch(`${backendURL}/posts`);
@@ -114,8 +115,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPosts();
 
     // Toggle Post Mode (Show Password Input)
-    postModeTgg.addEventListener("change", function() {
-        if (this.checked) {
+    postModeTgg.addEventListener("click", function() {
+        if (postModeTgg.checked) {
             passwordPrompt.hidden = false; // Show password prompt
         } else {
             passwordPrompt.hidden = true; // Hide password prompt
@@ -171,9 +172,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Logout (Hide Post Form)
     logoutBtn.addEventListener("click", () => {
-        postFormContainer.classList.add("hidden");
+        postFormContainer.hidden = true;
+        postModeTgg.checked = false;
         isPostMode = false;
     });
+
+    loadPosts(); // Load posts on page load
 });
 
