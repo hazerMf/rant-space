@@ -26,6 +26,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 article.innerHTML = `
                     <h2>${post.title}</h2>
                     <p>${post.content}</p>
+                `;
+                postsContainer.appendChild(article);
+            });
+        } catch (error) {
+            console.error("Error loading posts:", error);
+        }
+    }
+
+    async function loadPostsED() {
+        try {
+            const response = await fetch(`${backendURL}/posts`);
+            const posts = await response.json();
+            postsContainer.innerHTML = "";
+
+            posts.forEach(post => {
+                const article = document.createElement("article");
+                article.innerHTML = `
+                    <h2>${post.title}</h2>
+                    <p>${post.content}</p>
                     <button onclick="editPost('${post.id}')">Edit</button>
                     <button onclick="deletePost('${post.id}')">Delete</button>
                 `;
@@ -94,20 +113,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPosts();
 
-    // Post Mode
-    postModeTgg.addEventListener('change', function() {
+    // Toggle Post Mode (Show Password Input)
+    postModeTgg.addEventListener("change", function() {
         if (this.checked) {
-            let p = document.getElementById("passwordPrompt");
-            p.removeAttribute("hidden");
-        } if (this.unchecked) {
-            let p = document.getElementById("passwordPrompt");
-            p.addAttribute("hidden");
+            passwordPrompt.hidden = false; // Show password prompt
+        } else {
+            passwordPrompt.hidden = true; // Hide password prompt
+            postFormContainer.hidden = true; // Hide post form
+            isPostMode = false;
         }
     });
 
     checkPasswordBtn.addEventListener("click", () => {
-        postFormContainer.classList.remove("hidden");
-        passwordPrompt.classList.add("hidden");
+        const password = passwordInput.value.trim();
+
+        if (password === "") {
+            alert("Please enter a password.");
+            return;
+        }
+
+        postFormContainer.hidden = false; // Show post form
+        passwordPrompt.hidden = true; // Hide password prompt
         isPostMode = true;
     });
 
@@ -150,3 +176,4 @@ document.addEventListener("DOMContentLoaded", () => {
         isPostMode = false;
     });
 });
+

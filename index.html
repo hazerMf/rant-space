@@ -15,6 +15,14 @@
         </label>
     </header>
 
+    <div id="postFormContainer" hidden>
+        <h2>Add a New Post</h2>
+        <input type="text" id="postTitle" placeholder="Title">
+        <textarea id="postContent" placeholder="Write your post here..."></textarea>
+        <button id="submitPost">Publish</button>
+        <button id="logout">Logout</button>
+    </div>
+
     <div id="passwordPrompt" hidden>
         <h2>Enter Password</h2>
         <input type="password" id="passwordInput">
@@ -25,14 +33,6 @@
         <div id="posts"></div>
         <!-- Blog posts will be displayed here -->
     </section>
-
-    <div id="postFormContainer" hidden>
-        <h2>Add a New Post</h2>
-        <input type="text" id="postTitle" placeholder="Title">
-        <textarea id="postContent" placeholder="Write your post here..."></textarea>
-        <button id="submitPost">Publish</button>
-        <button id="logout">Logout</button>
-    </div>
 
     <script src="script.js"></script>
 </body>
