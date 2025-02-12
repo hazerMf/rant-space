@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
             if (response.ok) {
                 alert(result.message);
-                loadPosts(); // Refresh posts
+                loadPostsED(); // Refresh posts
             } else {
                 alert(result.message);
             }
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
             if (response.ok) {
                 alert(result.message);
-                loadPosts(); // Refresh posts
+                loadPostsED(); // Refresh posts
             } else {
                 alert(result.message);
             }
@@ -111,8 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error deleting post:", error);
         }
     }
-
-    loadPosts();
 
     // Toggle Post Mode (Show Password Input)
     postModeTgg.addEventListener("click", function() {
@@ -136,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         postFormContainer.hidden = false; // Show post form
         passwordPrompt.hidden = true; // Hide password prompt
         isPostMode = true;
+        loadPostsED();
     });
 
     submitPostBtn.addEventListener("click", async () => {
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(result.message);
                 postTitleInput.value = "";
                 postContentInput.value = "";
-                loadPosts();
+                loadPostsED();
             } else {
                 alert(result.message);
             }
